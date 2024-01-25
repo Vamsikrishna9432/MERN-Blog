@@ -23,7 +23,7 @@ const Header = () => {
            <LuMoon className="text-xl"/>
         </Button>
         <Link to="/login">
-            <Button gradientDuoTone="purpleToBlue" className="font-bold text-lg">Signin</Button>
+            <Button gradientDuoTone="purpleToBlue" className="font-bold text-lg" outline>Sign in</Button>
         </Link>
         <Navbar.Toggle />
         </div>
