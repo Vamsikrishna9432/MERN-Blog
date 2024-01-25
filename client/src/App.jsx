@@ -1,16 +1,11 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from "./pages/Home";
-import Signup from './pages/Signup';
-import Signin from './pages/Signin';
-import Dashboard from './pages/Dashboard';
-import Contact from './pages/Contact';
-import About from './pages/About';
-import Projects from './pages/Projects';
+import {Home, Signin, Signup, Dashboard, Contact, About, Projects, Header} from "./ImportsAndExports"; 
 
 function App() {
 
   return (
     <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
