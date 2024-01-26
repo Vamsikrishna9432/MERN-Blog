@@ -18,10 +18,22 @@ mongoose.connect(process.env.MONGODB_URL).then(() => {
 });
 
 
-app.use('/api/user', userRoutes);
-app.use('/api/auth', authRoutes)
+
 
 
 app.listen(3000, () => {
     console.log('server running at http://localhost:3000');
+});
+
+app.use('/api/user', userRoutes);
+app.use('/api/auth', authRoutes)
+
+app.use((error, req, res, next) => {
+    const statusCode = error.statusCode || 500;
+    const message = error.message || 'Internal Server Error';
+    res.status(statusCode).json({
+        success : false,
+        statusCode,
+        message
+    });
 });
