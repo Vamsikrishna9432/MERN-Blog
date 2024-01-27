@@ -36,7 +36,7 @@ const Signup = () => {
           }
           setIsLoading(false);
           if (response.ok) {
-             navigate('/login')
+             navigate('/signin')
           }
 
       }catch(err) {
@@ -80,7 +80,7 @@ const Signup = () => {
                   <span>
                     Have an Account?
                   </span>
-                  <Link className="text-blue-500 font-bold" to="/login">Sign in</Link>
+                  <Link className="text-blue-500 font-bold" to="/signin">Sign in</Link>
               </div>
               
                  { errorMessage && (<Alert className="mt-5" color='failure'>{errorMessage}</Alert>)}
