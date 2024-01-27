@@ -2,13 +2,15 @@ import signupImage from "../assets/signup-page-image.png";
 import {Alert, Button, Label, Spinner, TextInput} from "flowbite-react";
 import { useState } from "react";
 import {Link, useNavigate} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {signInStart,signInFailure,signInSuccess} from "../redux/user/userSlice";
 
 
 const Signin = () => {
   const [formData, setFormData] = useState({});
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const {loading, error: errorMessage} = useSelector((state) => state.user);
 
   const handleChange = (e) => {
         setFormData({...formData, [e.target.id] : e.target.value.trim()});
@@ -17,13 +19,12 @@ const Signin = () => {
   const handleSubmit = async(e) => {
       e.preventDefault();
        
-      if (!formData.email || !formData.password) {
-          return setErrorMessage("All Fields are Required!");
+      if (!formData.email || !formData.password || formData.email === "" || formData.password === "") {
+          return dispatch(signInFailure("All Fields are Required!"));
       }
 
       try{
-          setIsLoading(true);
-          setErrorMessage(null);
+          dispatch(signInStart())
           const response = await fetch('/api/auth/signin', {
             method : 'POST',
             headers : {'Content-Type' : 'application/json'},
@@ -32,16 +33,16 @@ const Signin = () => {
 
           const data = await response.json();
           if (data.success === false) {
-              setErrorMessage(data.message);
+              dispatch(signInFailure(data.message));
           }
-          setIsLoading(false);
+          
           if (response.ok) {
-             navigate('/')
+            dispatch(signInSuccess(data));
+             navigate('/');
           }
 
       }catch(err) {
-         setErrorMessage(err);
-         setIsLoading(false);
+        dispatch(signInFailure(err.message));
       }
   }
 
@@ -63,13 +64,13 @@ const Signin = () => {
                   <Label className="font-semibold text-md" value="Your password"/>
                   <TextInput className="placeholder-text-xl" type="password" placeholder="**********" id="password" onChange={handleChange}/>
                 </div>
-                <Button className="font-bold text-2xl" gradientDuoTone="purpleToPink" type="submit" disabled={isLoading}>
-                  {isLoading ? (
+                <Button className="font-bold text-2xl" gradientDuoTone="purpleToPink" type="submit" disabled={loading}>
+                  {loading ? (
                   <>
                     <Spinner size='sm'/>
                     <span className="pl-3">Loading...</span>
                   </>
-                  ) : "Sign up"}
+                  ) : "Sign in"}
                 </Button>
               </form>
               <div className="text-xl flex items-center gap-2 mt-5">
