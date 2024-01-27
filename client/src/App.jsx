@@ -1,5 +1,14 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {Home, Signin, Signup, Dashboard, Contact, About, Projects, Header} from "./ImportsAndExports"; 
+import Header from './components/Header';
+import Home from './pages/Home';
+import Signup from "./pages/Signup";
+import Signin from './pages/Signin';
+import Dashboard from './pages/Dashboard';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import FooterCom from "./components/FooterCom";
+
 
 function App() {
 
@@ -15,6 +24,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
         </Routes>
+        <FooterCom />
     </BrowserRouter>
   )
 }
