@@ -10,6 +10,8 @@ import Projects from './pages/Projects';
 import FooterCom from "./components/FooterCom";
 import PrivateRoute from "./components/PrivateRoute";
 import { errorHandler } from './../../api/utils/error';
+import DashProfile from "./components/DashProfile";
+import { DashCreatePost } from "./components/DashCreatePost";
 
 function App() {
 
@@ -21,7 +23,10 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
           <Route element={<PrivateRoute />}>
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/" element={<Dashboard />}>
+               <Route path="profile" element={<DashProfile/>}/>
+               <Route path="createPost" element={<DashCreatePost />}/>
+            </Route>
           </Route>
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />

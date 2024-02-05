@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Outlet} from "react-router-dom";
 import DashSidebar  from './../components/DashSidebar';
-import DashProfile from './../components/DashProfile';
 
 
 const Dashboard = () => {
@@ -20,7 +19,7 @@ const Dashboard = () => {
          <div>
            <DashSidebar activetab={tab}/>
          </div>
-         {tab === 'profile' && <DashProfile />}
+         <Outlet />
     </div>
   )
 }

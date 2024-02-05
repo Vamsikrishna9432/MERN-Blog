@@ -4,11 +4,11 @@ import {HiUser,HiArrowSmRight} from "react-icons/hi";
 
 export default  function DashSidebar({activetab})  {
   return (
-    <Sidebar className="w-full md:w-56">
+    <Sidebar  collapsed={false}>
          <Sidebar.Items>
             <Sidebar.ItemGroup>
                  <Link to="/dashboard?tab=profile">
-                     <Sidebar.Item icon={HiUser} active={activetab === 'profile'} label={'User'} labelColor='dark'>
+                     <Sidebar.Item as='div' icon={HiUser} active={activetab === 'profile'} label={'User'} labelColor='dark'>
                         Profile
                      </Sidebar.Item>
                  </Link>
