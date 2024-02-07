@@ -12,6 +12,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import { errorHandler } from './../../api/utils/error';
 import DashProfile from "./components/DashProfile";
 import { DashCreatePost } from "./components/DashCreatePost";
+import PrivateRouteForAdmin from "./components/PrivateRouteForAdmin";
 
 function App() {
 
@@ -25,7 +26,9 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard/" element={<Dashboard />}>
                <Route path="profile" element={<DashProfile/>}/>
-               <Route path="createPost" element={<DashCreatePost />}/>
+               <Route element={<PrivateRouteForAdmin />}>
+                    <Route path="create-post" element={<DashCreatePost />}/>
+               </Route>
             </Route>
           </Route>
           <Route path="/contact" element={<Contact />} />

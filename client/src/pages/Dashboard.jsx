@@ -15,8 +15,8 @@ const Dashboard = () => {
     }
   }, [location.search]);
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
-         <div>
+    <div className="min-h-screen flex flex-row">
+         <div className="z-50">
            <DashSidebar activetab={tab}/>
          </div>
          <Outlet />
