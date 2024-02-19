@@ -102,7 +102,7 @@ export const DashCreatePost = () => {
              </div>
              {imageUploadError && <Alert color='failure'>{imageUploadError}</Alert>}
              {formData.image && (<img src={formData.image} alt='upload' className="w-full h-72 object-cover" />)}
-             <ReactQuill theme="snow" placeholder="Write Something here....." required className="h-72 mb-12" onChange={(value) => setFormData({...formData, content : value})}/>
+             <ReactQuill theme="snow" placeholder="Write Something here....." required className="h-72 mb-12 dark:text-white" onChange={(value) => setFormData({...formData, content : value})}/>
              <div>
              <Button type="submit" gradientDuoTone="purpleToBlue" className="" size='lg'>Publish</Button>
              </div>

@@ -9,9 +9,9 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import FooterCom from "./components/FooterCom";
 import PrivateRoute from "./components/PrivateRoute";
-import { errorHandler } from './../../api/utils/error';
 import DashProfile from "./components/DashProfile";
 import { DashCreatePost } from "./components/DashCreatePost";
+import DashPosts from "./components/DashboardPageSubComponents/DashPosts";
 import PrivateRouteForAdmin from "./components/PrivateRouteForAdmin";
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
                <Route path="profile" element={<DashProfile/>}/>
                <Route element={<PrivateRouteForAdmin />}>
                     <Route path="create-post" element={<DashCreatePost />}/>
+                    <Route path="posts" element={<DashPosts />} />
                </Route>
             </Route>
           </Route>

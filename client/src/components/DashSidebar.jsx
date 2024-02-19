@@ -65,7 +65,9 @@ export default  function DashSidebar({activetab})  {
                         </Link>
                            <Sidebar.Item href="#">Update</Sidebar.Item>
                            <Sidebar.Item href="#">Delete</Sidebar.Item>
-                           <Sidebar.Item href="#">Manage</Sidebar.Item>
+                        <Link to="/dashboard/posts">
+                           <Sidebar.Item href="#" as="div">Manage</Sidebar.Item>
+                        </Link>
                       </Sidebar.Collapse>
                       <Sidebar.Collapse icon={HiUserGroup} label="Users">
                            <Sidebar.Item href="#">Add New</Sidebar.Item>

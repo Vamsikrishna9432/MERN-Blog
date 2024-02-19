@@ -6,10 +6,15 @@ export default {
     'node_modules/flowbite-react/lib/esm/**/*.js',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero-background': "url('./src/assets/bannerBackgrounds/Animated Shape.svg')",
+      }
+    },
   },
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    require('tailwind-scrollbar'),
   ],
 }
 
